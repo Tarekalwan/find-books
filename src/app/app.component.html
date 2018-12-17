@@ -1,0 +1,23 @@
+
+<div class="language">
+  <button (click)="switchLanguage('en')"><img src="../assets/img/en.jpeg" alt=""></button>
+  <button (click)="switchLanguage('fr')"><img src="../assets/img/fr.png" alt=""></button>
+</div>
+<router-outlet></router-outlet>
+
+<style media="screen">
+.language {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+
+.language img {
+  width: 35px;
+  height: 20px;
+}
+.language button {
+  background: none;
+  border: 0;
+}
+</style>

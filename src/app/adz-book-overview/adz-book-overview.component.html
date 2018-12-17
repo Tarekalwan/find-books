@@ -1,0 +1,15 @@
+
+<div class="dialog">
+  <h2 mat-dialog-title>{{ selectedBook.volumeInfo.title }}</h2>
+
+  <mat-dialog-content>
+      <mat-card>
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-subtitle>{{ selectedBook.volumeInfo.authors }}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image [src]="selectedBook.volumeInfo.imageLinks.thumbnail">
+      </mat-card>
+      {{ selectedBook.volumeInfo.description }}
+  </mat-dialog-content>
+</div>

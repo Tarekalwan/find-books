@@ -1,0 +1,76 @@
+<span class="back" (click)="goBack()" >
+  &laquo;
+</span>
+<div class="container">
+  <div class="" style="margin: auto; width: 50%;">
+    <mat-form-field  style=" display: inline-block; margin-right: 30px;" >
+      <input matInput placeholder="{{'Search' | translate}}" [(ngModel)]="search">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="{{'Filter' | translate}}" (selectionChange)="byAuthor($event.value)" >
+        <mat-option value="">
+        </mat-option>
+        <mat-option *ngFor="let author of authors" [value]="author">
+          {{author}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+<div class="row">
+  <div class="col" *ngFor="let book of searchResults.items | adzSearch: search | adzSearchByAuthor: author" (click)="onClick(book)" >
+    <mat-card class="card">
+      <mat-card-header class="card-header">
+        <mat-card-title>{{ book.volumeInfo.title }}</mat-card-title>
+        <mat-card-subtitle>{{ book.volumeInfo.authors }}</mat-card-subtitle>
+      </mat-card-header>
+      <img *ngIf="book.volumeInfo.imageLinks" mat-card-image [src]="book.volumeInfo.imageLinks.thumbnail">
+    </mat-card>
+  </div>
+
+</div>
+
+</div>
+
+
+<style media="screen">
+.back {
+  cursor: pointer;
+  background-color: #FFFFFF;
+  padding: 10px 25px;
+  margin-top: 30px;
+  margin-left: 30px;
+  border-radius: 50%;
+  position: absolute;
+  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  top: 0;
+  z-index: 2;
+  font-size: 40px;
+}
+
+.card {
+  padding: 5px;
+  background-color: #FFFFFF;
+  margin: 5px;
+}
+
+/* .card-header {
+  background: red;
+  margin: 15px;
+  padding: 15px;
+} */
+
+.card img {
+  width: 100%;
+  heigth: 100%;
+}
+
+.mat-card-image {
+  margin: 0;
+}
+
+.col {
+  width: 20%;
+  display: inline-block;
+}
+</style>
